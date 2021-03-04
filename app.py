@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, url_for, request
 from github import Github
 
 app = Flask(__name__)
-repo_user = Github("416434f53842f0720f24b38591b6dd3bcb0bdfb0")
+repo_user = Github("9144841645371c907b6693ac70794f8bfd21e7e0")
 
 @app.route('/',methods = ['GET'])
 def index():
@@ -15,6 +15,7 @@ def fork():
   if request.method == 'POST':
     repo = repo_user.get_user().get_repo('healthjoy')
     github_pat = request.form["github_pat"]
+    #github_user = Github("1a8289e88dfbcd2d918357621feb972e05191ad0")
     github_user = Github(github_pat)
     user = github_user.get_user()
     myfork = user.create_fork(repo)
