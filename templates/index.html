@@ -1,0 +1,54 @@
+<html lang="en">
+    <head>
+        {% block head %}
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        {% block styles %}
+            <!-- Bootstrap CSS -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        {% endblock %}
+
+        <title>Web Service - Home</title>
+        {% endblock %}
+    </head>
+    <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link" href="/">Web Service</a></li>
+        </div>
+    </nav>
+        <!-- Your page content -->
+        <div class="container">
+        <h1>Welcome to HealthJoy Web Service</h1>
+        <h4>This Project's Github repository: {{repo.full_name}}</h4> 
+        <hr>
+        <div class="row">
+          <div class="col-sm">
+            <form action = "http://localhost:5000/fork" method = "post">
+              <p>To fork this repo we need to first authenticate you with your Github's personal access token (PAT), More info <a target="_blank" href="https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token">here</a></p>
+              <p>Github Personal Access Token: <input type = "text" value = "" name = "github_pat" /></p>
+              <p><input class="btn btn-primary" type = "submit" value = "Fork Repo" /></p>
+            </form>  
+          </div>
+          <div class="col-sm">
+             <h6>List of Github users who already forked this repo:</h6>
+              {% for fork in forks %} 
+              <ul>
+                <li>{{fork.full_name}}</li>
+              </ul>
+              {% endfor %} 
+          </div>
+        </div>
+           
+        </div>
+        {% block content %}{% endblock %}
+           
+        {% block scripts %}
+            <!-- Optional JavaScript -->
+           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        {% endblock %}
+    </body>
+</html>
