@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, url_for, request
 from github import Github
 
 app = Flask(__name__)
-repo_user = Github("9144841645371c907b6693ac70794f8bfd21e7e0")
+repo_user = Github("4392a50fef9b951a52f87121589839579644607d")
 
 @app.route('/',methods = ['GET'])
 def index():
